@@ -23,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
               fontSize: 28,
               fontWeight: FontWeight.bold
           ),
+
         ),
       ),
     );

@@ -174,7 +174,6 @@ class _WordSearchScreenState extends State<WordSearchScreen> {
               if (alphabetError.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-
                   child: Text(
                     alphabetError,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
