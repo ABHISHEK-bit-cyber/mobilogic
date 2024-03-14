@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -108,41 +107,21 @@ class _WordSearchScreenState extends State<WordSearchScreen> {
           child: Column(
             children: [
               const Text('Enter row and column'),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Row'),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      enabled: !disableRowColumn,
-                      controller: rowController,
-                      decoration: const InputDecoration(
-                        labelText: "enter row",
-                      ),
-                    ),
-                  ),
-                ],
+              TextField(
+                keyboardType: TextInputType.number,
+                enabled: !disableRowColumn,
+                controller: rowController,
+                decoration: const InputDecoration(
+                  labelText: "enter row",
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Column'),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Expanded(
-                      child: TextField(
-                        enabled: !disableRowColumn,
-                        keyboardType: TextInputType.number,
-                        controller: columnController,
-                        decoration: const InputDecoration(
-                          labelText: "enter column",
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              TextField(
+                enabled: !disableRowColumn,
+                keyboardType: TextInputType.number,
+                controller: columnController,
+                decoration: const InputDecoration(
+                  labelText: "enter column",
+                ),
               ),
               if (rowColumnError.isNotEmpty)
                 Text(
@@ -178,30 +157,19 @@ class _WordSearchScreenState extends State<WordSearchScreen> {
                   ),
                 ),
               if (disableRowColumn)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('Alphabets'),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      child: Expanded(
-                        child: TextField(
-                          keyboardType: TextInputType.text,
-                          controller: alphaController,
-                          inputFormatters: [
-                            FilteringTextInputFormatter(RegExp('[A-Z]'),
-                                allow: true),
-                          ],
-                          textCapitalization: TextCapitalization.characters,
-                          maxLength: int.parse(rowController.text) *
-                              int.parse(columnController.text),
-                          decoration: const InputDecoration(
-                            labelText: "enter alphabets",
-                          ),
-                        ),
-                      ),
-                    ),
+                TextField(
+                  keyboardType: TextInputType.text,
+                  controller: alphaController,
+                  inputFormatters: [
+                    FilteringTextInputFormatter(RegExp('[A-Z]'),
+                        allow: true),
                   ],
+                  textCapitalization: TextCapitalization.characters,
+                  maxLength: int.parse(rowController.text) *
+                      int.parse(columnController.text),
+                  decoration: const InputDecoration(
+                    labelText: "enter alphabets",
+                  ),
                 ),
               if (alphabetError.isNotEmpty)
                 Padding(
